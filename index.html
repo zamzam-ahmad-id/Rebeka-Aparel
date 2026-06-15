@@ -1,0 +1,2990 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rebeka Apparel - Koleksi Pastel</title>
+
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <!-- Konfigurasi Warna Pastel Tailwind -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Outfit", "sans-serif"],
+            },
+            colors: {
+              pastel: {
+                pink: "#FDF0F5",
+                blue: "#E0F4FF",
+                green: "#E8F5E9",
+                yellow: "#FFF9E6",
+                accent: "#FF8FAB",
+                dark: "#4A4A4A",
+              },
+            },
+            boxShadow: {
+              soft: "0 10px 40px -10px rgba(0,0,0,0.05)",
+              glow: "0 0 20px rgba(255, 143, 171, 0.3)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- CSS Internal -->
+    <style>
+      /* Animasi Transisi Halus */
+      .slide {
+        display: none;
+      }
+      .slide.active {
+        display: block;
+        animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(1.02);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ff8fab;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #ff6b93;
+      }
+
+      /* Kursor Pointer untuk Kartu Produk */
+      [id^="koleksi-"] .grid > div,
+      #search-results-grid > div {
+        cursor: pointer;
+      }
+
+      /* ============================================== */
+      /* CSS KHUSUS WELCOME BANNER                      */
+      /* ============================================== */
+      #welcome-banner {
+        perspective: 1200px;
+      }
+      .anim-masuk-3d {
+        animation: masukSuper3D 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+      @keyframes masukSuper3D {
+        0% {
+          transform: scale3d(0.3, 0.3, 0.3) rotateX(40deg) rotateY(-40deg)
+            translateZ(-800px);
+          opacity: 0;
+        }
+        100% {
+          transform: scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) translateZ(0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans text-gray-700 bg-[#FAFAFA] overflow-hidden">
+    <!-- ============================================== -->
+    <!-- WELCOME BANNER (SPLASH SCREEN)                 -->
+    <!-- ============================================== -->
+    <div
+      id="welcome-banner"
+      class="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center transition-all duration-700"
+    >
+      <div class="absolute inset-0 z-0 overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1920&auto=format&fit=crop"
+          alt="Welcome Background"
+          class="w-full h-full object-cover opacity-20 blur-sm"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-pastel-pink/90 via-white/95 to-pastel-blue/90 backdrop-blur-sm"
+        ></div>
+      </div>
+
+      <div
+        class="relative z-10 text-center px-6 max-w-xl mx-auto transform transition-transform duration-1000 translate-y-4"
+        id="banner-content"
+      >
+        <div
+          class="w-24 h-24 sm:w-28 sm:h-28 bg-pastel-accent rounded-full flex items-center justify-center text-white font-bold text-4xl sm:text-5xl mx-auto mb-6 sm:mb-8 shadow-glow animate-bounce"
+        >
+          R
+        </div>
+        <span
+          class="inline-block py-1 px-4 rounded-full bg-white text-pastel-accent text-xs sm:text-sm font-bold tracking-widest mb-4 uppercase shadow-sm border border-pastel-pink"
+          >Koleksi Terbaru 2026</span
+        >
+        <h1
+          class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mb-4 sm:mb-6 tracking-tight leading-tight"
+        >
+          Selamat Datang di <br /><span class="text-pastel-accent"
+            >Rebeka Apparel</span
+          >
+        </h1>
+        <p
+          class="text-gray-600 mb-8 sm:mb-10 text-base sm:text-lg font-medium leading-relaxed"
+        >
+          Temukan koleksi busana pastel cantik yang dirancang khusus untuk
+          kenyamanan dan gayamu setiap hari.
+        </p>
+        <button
+          id="btn-enter-site"
+          class="bg-gray-900 text-white px-8 py-4 sm:px-10 sm:py-5 rounded-full font-bold text-base sm:text-lg hover:bg-pastel-accent transition duration-300 shadow-xl hover:shadow-glow transform hover:-translate-y-1 group"
+        >
+          Masuk Disini
+          <i
+            class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"
+          ></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 1. HEADER (Glassmorphism Effect) -->
+    <header
+      class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100 transition-all duration-300"
+    >
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <!-- Brand Logo -->
+        <a href="#" class="nav-beranda flex items-center gap-2 group">
+          <div
+            class="w-10 h-10 bg-pastel-accent rounded-full flex items-center justify-center text-white font-bold text-xl group-hover:rotate-12 transition-transform"
+          >
+            R
+          </div>
+          <span class="text-2xl font-extrabold tracking-tight text-gray-800">
+            Rebeka<span class="text-pastel-accent font-medium">Apparel</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8 font-medium items-center">
+          <a
+            href="#"
+            class="nav-beranda text-gray-600 hover:text-pastel-accent transition duration-300 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-pastel-accent after:transition-all hover:after:w-full"
+            >Beranda</a
+          >
+          <a
+            href="#kategori-section"
+            class="nav-beranda text-gray-600 hover:text-pastel-accent transition duration-300 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-pastel-accent after:transition-all hover:after:w-full"
+            >Koleksi</a
+          >
+          <a
+            href="#unggulan"
+            class="nav-beranda text-gray-600 hover:text-pastel-accent transition duration-300 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-pastel-accent after:transition-all hover:after:w-full"
+            >Unggulan</a
+          >
+          <a
+            href="#kontak"
+            class="nav-beranda text-gray-600 hover:text-pastel-accent transition duration-300 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-pastel-accent after:transition-all hover:after:w-full"
+            >Kontak</a
+          >
+        </nav>
+
+        <div class="flex items-center space-x-5">
+          <!-- Search Input Desktop -->
+          <div
+            class="hidden lg:flex items-center relative max-w-[200px] xl:max-w-[260px] w-full"
+          >
+            <input
+              type="text"
+              id="search-input-desktop"
+              placeholder="Cari produk..."
+              class="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-pastel-accent/30 focus:bg-white transition duration-300"
+            />
+            <i
+              class="fas fa-search absolute left-3.5 text-gray-400 text-sm"
+            ></i>
+          </div>
+
+          <!-- Cart Button -->
+          <button
+            id="cart-btn"
+            class="relative text-gray-600 hover:text-pastel-accent focus:outline-none transition transform hover:scale-110"
+          >
+            <i class="fas fa-shopping-bag text-2xl"></i>
+            <span
+              id="cart-count"
+              class="absolute -top-2 -right-2 bg-pastel-accent text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-glow border-2 border-white"
+              >0</span
+            >
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="menu-btn"
+            class="md:hidden text-gray-600 hover:text-pastel-accent focus:outline-none bg-gray-100 p-2 rounded-lg"
+          >
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        class="md:hidden hidden bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl absolute w-full left-0 origin-top"
+        id="mobile-menu"
+      >
+        <div class="flex flex-col px-6 py-4 space-y-4 pb-6">
+          <div class="flex items-center relative w-full mb-2">
+            <input
+              type="text"
+              id="search-input-mobile"
+              placeholder="Cari pakaian..."
+              class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-pastel-accent/30 focus:bg-white transition duration-300"
+            />
+            <i class="fas fa-search absolute left-4 text-gray-400"></i>
+          </div>
+          <a
+            href="#"
+            class="nav-beranda block text-lg font-medium text-gray-700 hover:text-pastel-accent"
+            ><i class="fas fa-home w-6 text-pastel-accent/70"></i> Beranda</a
+          >
+          <a
+            href="#kategori-section"
+            class="nav-beranda block text-lg font-medium text-gray-700 hover:text-pastel-accent"
+            ><i class="fas fa-th-large w-6 text-pastel-accent/70"></i>
+            Koleksi</a
+          >
+          <a
+            href="#unggulan"
+            class="nav-beranda block text-lg font-medium text-gray-700 hover:text-pastel-accent"
+            ><i class="fas fa-star w-6 text-pastel-accent/70"></i> Unggulan</a
+          >
+          <a
+            href="#kontak"
+            class="nav-beranda block text-lg font-medium text-gray-700 hover:text-pastel-accent"
+            ><i class="fas fa-phone w-6 text-pastel-accent/70"></i> Kontak</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================== -->
+    <!-- WRAPPER HALAMAN UTAMA (BERANDA)                -->
+    <!-- ============================================== -->
+    <div id="home-view">
+      <!-- 2. SLIDER (Hero Section) -->
+      <!-- 2. SLIDER (Hero Section) -->
+      <section
+        class="relative w-full overflow-hidden h-[70vh] md:h-[85vh] bg-gray-100"
+      >
+        <!-- Slide 1 (Pink Vibe) -->
+        <div class="slide active w-full h-full relative">
+          <img
+            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1920&auto=format&fit=crop"
+            alt="Slider 1"
+            class="w-full h-full object-cover object-top"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-black/50 md:from-black/40 to-transparent flex flex-col justify-center items-start text-left p-8 md:p-20"
+          >
+            <div
+              class="max-w-2xl backdrop-blur-md bg-white/30 border border-white/40 p-8 md:p-10 rounded-3xl shadow-2xl transform translate-y-4"
+            >
+              <span
+                class="inline-block py-1 px-3 rounded-full bg-pastel-accent/90 text-white text-sm font-bold tracking-wider mb-4 uppercase"
+                >Koleksi Baru</span
+              >
+              <h1
+                class="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg"
+              >
+                Nuansa Pastel <br /><span class="text-pastel-pink"
+                  >Musim Semi</span
+                >
+              </h1>
+              <p
+                class="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-md"
+              >
+                Tampil manis dan percaya diri setiap hari dengan koleksi terbaru
+                kami.
+              </p>
+              <a
+                href="#kategori-section"
+                class="nav-beranda inline-flex items-center gap-2 bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-pastel-accent transition duration-300 shadow-lg group"
+              >
+                Belanja Sekarang
+                <i
+                  class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 (Blue/Neutral Vibe) -->
+        <div class="slide w-full h-full relative">
+          <img
+            src="https://images.unsplash.com/photo-1550639525-c97d455acf70?q=80&w=1920&auto=format&fit=crop"
+            alt="Slider 2"
+            class="w-full h-full object-cover object-[center_30%]"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-black/50 md:from-black/40 to-transparent flex flex-col justify-center items-start text-left p-8 md:p-20"
+          >
+            <div
+              class="max-w-2xl backdrop-blur-md bg-white/30 border border-white/40 p-8 md:p-10 rounded-3xl shadow-2xl"
+            >
+              <span
+                class="inline-block py-1 px-3 rounded-full bg-blue-400/90 text-white text-sm font-bold tracking-wider mb-4 uppercase"
+                >Eksklusif</span
+              >
+              <h1
+                class="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg"
+              >
+                Kenyamanan <br /><span class="text-pastel-blue">Premium</span>
+              </h1>
+              <p
+                class="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-md"
+              >
+                Bahan berkualitas tinggi yang lembut dan aman untuk kulit
+                sensitif.
+              </p>
+              <a
+                href="#kategori-section"
+                class="nav-beranda inline-flex items-center gap-2 bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-400 transition duration-300 shadow-lg group"
+              >
+                Lihat Koleksi
+                <i
+                  class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 (Summer/Yellow Vibe) -->
+        <div class="slide w-full h-full relative">
+          <img
+            src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1920&auto=format&fit=crop"
+            alt="Slider 3"
+            class="w-full h-full object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-black/50 md:from-black/40 to-transparent flex flex-col justify-center items-start text-left p-8 md:p-20"
+          >
+            <div
+              class="max-w-2xl backdrop-blur-md bg-white/30 border border-white/40 p-8 md:p-10 rounded-3xl shadow-2xl"
+            >
+              <span
+                class="inline-block py-1 px-3 rounded-full bg-yellow-500/90 text-white text-sm font-bold tracking-wider mb-4 uppercase"
+                >Edisi Terbatas</span
+              >
+              <h1
+                class="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg"
+              >
+                Ceria di <br /><span class="text-pastel-yellow"
+                  >Musim Panas</span
+                >
+              </h1>
+              <p
+                class="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-md"
+              >
+                Potongan minimalis yang dirancang khusus untuk kenyamanan Anda.
+              </p>
+              <a
+                href="#kategori-section"
+                class="nav-beranda inline-flex items-center gap-2 bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-yellow-500 transition duration-300 shadow-lg group"
+              >
+                Belanja Sekarang
+                <i
+                  class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="absolute bottom-8 right-8 flex space-x-4">
+          <button
+            id="prev-slide"
+            class="bg-white/70 backdrop-blur-sm hover:bg-white text-gray-800 w-12 h-12 rounded-full flex justify-center items-center transition shadow-lg hover:text-pastel-accent"
+          >
+            <i class="fas fa-chevron-left text-xl"></i>
+          </button>
+          <button
+            id="next-slide"
+            class="bg-white/70 backdrop-blur-sm hover:bg-white text-gray-800 w-12 h-12 rounded-full flex justify-center items-center transition shadow-lg hover:text-pastel-accent"
+          >
+            <i class="fas fa-chevron-right text-xl"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- 2.5 LOGO FITUR / KEUNGGULAN -->
+      <section
+        class="py-8 sm:py-10 bg-white border-b border-gray-100 shadow-sm relative z-10"
+      >
+        <div class="container mx-auto px-4">
+          <div
+            class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x divide-gray-50"
+          >
+            <div class="flex flex-col items-center justify-center p-2 group">
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-pastel-pink/50 text-pastel-accent flex items-center justify-center mb-3 group-hover:scale-110 transition-all duration-300 shadow-sm"
+              >
+                <i class="fas fa-truck-fast text-xl sm:text-2xl"></i>
+              </div>
+              <h4 class="font-bold text-gray-900 text-sm sm:text-base">
+                Gratis Ongkir
+              </h4>
+              <p class="text-xs sm:text-sm text-gray-500 mt-1 hidden sm:block">
+                Ke seluruh Indonesia
+              </p>
+            </div>
+            <div class="flex flex-col items-center justify-center p-2 group">
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-pastel-blue/50 text-blue-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-all duration-300 shadow-sm"
+              >
+                <i class="fas fa-gem text-xl sm:text-2xl"></i>
+              </div>
+              <h4 class="font-bold text-gray-900 text-sm sm:text-base">
+                Kualitas Premium
+              </h4>
+              <p class="text-xs sm:text-sm text-gray-500 mt-1 hidden sm:block">
+                Bahan anti kusut & lembut
+              </p>
+            </div>
+            <div class="flex flex-col items-center justify-center p-2 group">
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-pastel-green/50 text-green-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-all duration-300 shadow-sm"
+              >
+                <i class="fas fa-shield-alt text-xl sm:text-2xl"></i>
+              </div>
+              <h4 class="font-bold text-gray-900 text-sm sm:text-base">
+                Pembayaran Aman
+              </h4>
+              <p class="text-xs sm:text-sm text-gray-500 mt-1 hidden sm:block">
+                Transaksi terenkripsi 100%
+              </p>
+            </div>
+            <div class="flex flex-col items-center justify-center p-2 group">
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-pastel-yellow/50 text-yellow-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-all duration-300 shadow-sm"
+              >
+                <i class="fas fa-undo text-xl sm:text-2xl"></i>
+              </div>
+              <h4 class="font-bold text-gray-900 text-sm sm:text-base">
+                Garansi Retur
+              </h4>
+              <p class="text-xs sm:text-sm text-gray-500 mt-1 hidden sm:block">
+                Tukar ukuran dalam 7 hari
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. KATEGORI (Cards) -->
+      <section id="kategori-section" class="py-24 bg-white relative">
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-pastel-pink rounded-full blur-3xl opacity-50 -z-10 -translate-y-1/2 translate-x-1/3"
+        ></div>
+
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-gray-900">
+              Kategori Pilihan
+            </h2>
+            <div class="w-20 h-1.5 bg-pastel-accent mx-auto rounded-full"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Column 1: Baju -->
+            <div
+              class="group cursor-pointer bg-white rounded-3xl p-4 shadow-soft hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-50"
+              id="btn-baju"
+            >
+              <div
+                class="overflow-hidden rounded-2xl mb-6 bg-pastel-pink aspect-[4/5] relative"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1551163943-3f6a855d1153?q=80&w=600&auto=format&fit=crop"
+                  alt="Baju"
+                  class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"
+                ></div>
+                <div
+                  class="absolute bottom-4 left-0 right-0 text-center translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+                >
+                  <span
+                    class="bg-white text-gray-900 px-6 py-2 rounded-full font-bold text-sm shadow-lg"
+                    >Jelajahi</span
+                  >
+                </div>
+              </div>
+              <h3 class="text-2xl font-bold text-center mb-2 text-gray-800">
+                Atasan & Kemeja
+              </h3>
+              <p class="text-center text-gray-500 text-sm px-4">
+                Pilihan blouse, kemeja, dan kaos dengan warna soft.
+              </p>
+            </div>
+
+            <!-- Column 2: Celana -->
+            <div
+              class="group cursor-pointer bg-white rounded-3xl p-4 shadow-soft hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-50"
+              id="btn-celana"
+            >
+              <div
+                class="overflow-hidden rounded-2xl mb-6 bg-pastel-blue aspect-[4/5] relative"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600&auto=format&fit=crop"
+                  alt="Celana"
+                  class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"
+                ></div>
+                <div
+                  class="absolute bottom-4 left-0 right-0 text-center translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+                >
+                  <span
+                    class="bg-white text-gray-900 px-6 py-2 rounded-full font-bold text-sm shadow-lg"
+                    >Jelajahi</span
+                  >
+                </div>
+              </div>
+              <h3 class="text-2xl font-bold text-center mb-2 text-gray-800">
+                Celana & Bawahan
+              </h3>
+              <p class="text-center text-gray-500 text-sm px-4">
+                Kulot, jeans, dan celana yang bikin bebas bergerak.
+              </p>
+            </div>
+
+            <!-- Column 3: Topi & Tas -->
+            <div
+              class="group cursor-pointer bg-white rounded-3xl p-4 shadow-soft hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-50"
+              id="btn-topi"
+            >
+              <div
+                class="overflow-hidden rounded-2xl mb-6 bg-pastel-green aspect-[4/5] relative"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1584916201218-f4242ceb4809?q=80&w=600&auto=format&fit=crop"
+                  alt="Aksesoris"
+                  class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"
+                ></div>
+                <div
+                  class="absolute bottom-4 left-0 right-0 text-center translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+                >
+                  <span
+                    class="bg-white text-gray-900 px-6 py-2 rounded-full font-bold text-sm shadow-lg"
+                    >Jelajahi</span
+                  >
+                </div>
+              </div>
+              <h3 class="text-2xl font-bold text-center mb-2 text-gray-800">
+                Topi & Tas
+              </h3>
+              <p class="text-center text-gray-500 text-sm px-4">
+                Lengkapi OOTD kamu dengan totebag dan topi cantik.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. UNGGULAN -->
+      <section id="unggulan" class="py-24 bg-[#FAFAFA] relative">
+        <div
+          class="absolute bottom-0 left-0 w-80 h-80 bg-pastel-blue rounded-full blur-3xl opacity-40 -z-10 translate-y-1/3 -translate-x-1/4"
+        ></div>
+
+        <div class="container mx-auto px-4 space-y-24">
+          <!-- Row 1 -->
+          <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div class="w-full lg:w-1/2 relative">
+              <div
+                class="absolute -inset-4 bg-pastel-yellow/30 rounded-3xl transform rotate-3 -z-10 hidden sm:block"
+              ></div>
+              <div class="overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl">
+                <img
+                  src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=800&auto=format&fit=crop"
+                  alt="New Arrival"
+                  class="w-full h-72 sm:h-80 lg:h-[500px] object-cover hover:scale-105 transition duration-700"
+                />
+              </div>
+            </div>
+            <div class="w-full lg:w-1/2 space-y-5 md:space-y-6">
+              <div
+                class="inline-flex items-center gap-2 bg-yellow-100 text-yellow-800 py-1.5 px-4 rounded-full text-xs font-bold uppercase tracking-widest"
+              >
+                <i class="fas fa-star text-yellow-500"></i> Produk Baru
+              </div>
+              <h2
+                class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight"
+              >
+                Koleksi <br />Musim Panas
+              </h2>
+              <p class="text-gray-600 leading-relaxed text-base md:text-lg">
+                Sambut hari yang cerah dengan koleksi terbaru dari Rebeka
+                Apparel. Kami menghadirkan desain yang
+                <i class="text-pastel-accent">breathable</i> dan
+                <i class="text-pastel-accent">flowy</i>, sangat cocok untuk
+                menemani hari-harimu.
+              </p>
+              <div class="pt-2 md:pt-4">
+                <button
+                  id="btn-eksplorasi"
+                  class="bg-white border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white font-bold py-3 px-6 md:py-3.5 md:px-8 rounded-full transition duration-300 shadow-soft w-full sm:w-auto"
+                >
+                  Eksplorasi Sekarang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div
+            class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20"
+          >
+            <div class="w-full lg:w-1/2 relative">
+              <div
+                class="absolute -inset-4 bg-pastel-pink/30 rounded-3xl transform -rotate-3 -z-10 hidden sm:block"
+              ></div>
+              <div class="overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl">
+                <img
+                  src="https://images.unsplash.com/photo-1520006403909-838d6b92c22e?q=80&w=800&auto=format&fit=crop"
+                  alt="Casual Style"
+                  class="w-full h-72 sm:h-80 lg:h-[500px] object-cover hover:scale-105 transition duration-700"
+                />
+              </div>
+            </div>
+            <div class="w-full lg:w-1/2 space-y-5 md:space-y-6">
+              <div
+                class="inline-flex items-center gap-2 bg-pink-100 text-pink-700 py-1.5 px-4 rounded-full text-xs font-bold uppercase tracking-widest"
+              >
+                <i class="fas fa-fire text-pink-500"></i> Best Seller
+              </div>
+              <h2
+                class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight"
+              >
+                Gaya Kasual <br />Minimalis
+              </h2>
+              <p class="text-gray-600 leading-relaxed text-base md:text-lg">
+                Tidak perlu pusing memikirkan padu padan. Potongan minimalis
+                kami dirancang khusus agar mudah dikenakan namun tetap
+                memberikan *statement* elegan.
+              </p>
+              <ul class="space-y-3 md:space-y-4 text-gray-600 font-medium pt-2">
+                <li class="flex items-center gap-3">
+                  <div
+                    class="w-6 h-6 rounded-full bg-pastel-green flex items-center justify-center text-green-600 text-xs shadow-sm"
+                  >
+                    <i class="fas fa-check"></i>
+                  </div>
+                  Bahan anti-kusut premium
+                </li>
+                <li class="flex items-center gap-3">
+                  <div
+                    class="w-6 h-6 rounded-full bg-pastel-blue flex items-center justify-center text-blue-500 text-xs shadow-sm"
+                  >
+                    <i class="fas fa-check"></i>
+                  </div>
+                  Palet warna netral dan pastel
+                </li>
+                <li class="flex items-center gap-3">
+                  <div
+                    class="w-6 h-6 rounded-full bg-pastel-yellow flex items-center justify-center text-yellow-600 text-xs shadow-sm"
+                  >
+                    <i class="fas fa-check"></i>
+                  </div>
+                  Jahitan rapi standar butik
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- END WRAPPER BERANDA -->
+
+    <!-- ============================================== -->
+    <!-- TEMPLATE COMPONENT                             -->
+    <!-- ============================================== -->
+
+    <!-- HALAMAN KOLEKSI BAJU -->
+    <div
+      id="koleksi-baju-view"
+      style="display: none"
+      class="py-24 bg-[#FAFAFA] min-h-screen"
+    >
+      <div class="container mx-auto px-4">
+        <button
+          class="btn-kembali mb-10 inline-flex items-center text-gray-600 hover:text-pastel-accent transition font-bold bg-white px-5 py-2.5 rounded-full shadow-sm border border-gray-100 hover:shadow-md"
+        >
+          <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
+        </button>
+
+        <div class="mb-12">
+          <h2 class="text-4xl font-extrabold mb-3 text-gray-900">
+            Koleksi Atasan & Kemeja
+          </h2>
+          <div class="w-20 h-1.5 bg-pastel-accent rounded-full mb-4"></div>
+          <p class="text-gray-500 text-lg max-w-2xl">
+            Temukan atasan pastel favoritmu untuk melengkapi gaya keseharian
+            yang manis dan nyaman.
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+        >
+          <!-- Card Style Baru -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <span
+              class="absolute top-6 right-6 z-10 bg-white/90 backdrop-blur-sm text-xs font-bold px-3 py-1 rounded-full shadow-sm text-pink-500"
+              >Baru</span
+            >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-pastel-pink/30"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1551163943-3f6a855d1153?w=400&q=80"
+                alt="Blouse Pink"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <!-- Add to cart overlay icon -->
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Katun Premium
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Blouse Serene Pink
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Atasan blouse dengan potongan longgar dan aksen ruffle manis,
+                cocok untuk gaya kasual sehari-hari.
+              </p>
+              <div class="flex justify-between items-center mt-3">
+                <p class="text-pastel-accent font-extrabold text-lg">
+                  Rp 185.000
+                </p>
+              </div>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white hover:border-gray-900 transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+
+          <!-- Produk 2 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-pastel-blue/30"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=400&q=80"
+                alt="Kemeja Biru"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Linen Bernapas
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Kemeja Sky Blue
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Kemeja berbahan linen yang sejuk, pas untuk ngantor atau sekadar
+                hangout santai bersama teman.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 210.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white hover:border-gray-900 transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+
+          <!-- Produk 3 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-pastel-green/30"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1550639525-c97d455acf70?w=400&q=80"
+                alt="Tunik Hijau"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Rayon Lembut
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Tunik Mint Fresh
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Tunik panjang dengan warna mint yang menyegarkan, memberikan
+                kesan anggun dan sopan.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 195.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white hover:border-gray-900 transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+
+          <!-- Produk 4 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-pastel-yellow/30"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400&q=80"
+                alt="Kaos Kuning"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Katun Organik
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Kaos Buttercream
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Kaos harian berbahan katun organik yang sangat lembut dan
+                menyerap keringat dengan baik.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 120.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white hover:border-gray-900 transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HALAMAN KOLEKSI CELANA -->
+    <div
+      id="koleksi-celana-view"
+      style="display: none"
+      class="py-24 bg-[#FAFAFA] min-h-screen"
+    >
+      <div class="container mx-auto px-4">
+        <button
+          class="btn-kembali mb-10 inline-flex items-center text-gray-600 hover:text-pastel-accent transition font-bold bg-white px-5 py-2.5 rounded-full shadow-sm border border-gray-100 hover:shadow-md"
+        >
+          <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
+        </button>
+        <div class="mb-12">
+          <h2 class="text-4xl font-extrabold mb-3 text-gray-900">
+            Koleksi Celana & Bawahan
+          </h2>
+          <div class="w-20 h-1.5 bg-pastel-accent rounded-full mb-4"></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <!-- Produk Celana 1 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-gray-100"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&q=80"
+                alt="Kulot Beige"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Linen Premium
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Kulot Linen Beige
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Celana kulot dengan karet di bagian pinggang, memberikan siluet
+                kaki lebih jenjang dan nyaman dipakai.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 175.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+
+          <!-- Produk Celana 2 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-pastel-blue/20"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1542272604-780c8e501514?w=400&q=80"
+                alt="Jeans Highwaist"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Denim Ringan
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Jeans Highwaist Blue
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Celana jeans potongan pinggang tinggi yang membentuk figur tubuh
+                dengan bahan stretch yang nyaman.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 220.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+
+          <!-- Produk Celana 3 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-pastel-pink/20"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1583496661160-c588c443c982?w=400&q=80"
+                alt="Rok Plisket"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Polyester Flowy
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Rok Plisket Peach
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Rok plisket dengan lipatan rapi dan bahan jatuh, memberikan
+                sentuhan feminin pada penampilanmu.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 160.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+
+          <!-- Produk Celana 4 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-gray-100"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=400&q=80"
+                alt="Celana Kain"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Katun Stretch
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Celana Kain Ivory
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Celana panjang formal dengan cutting lurus, ideal dipadukan
+                dengan kemeja atau blouse untuk ke kantor.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 185.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HALAMAN KOLEKSI TOPI & TAS -->
+    <div
+      id="koleksi-topi-view"
+      style="display: none"
+      class="py-24 bg-[#FAFAFA] min-h-screen"
+    >
+      <div class="container mx-auto px-4">
+        <button
+          class="btn-kembali mb-10 inline-flex items-center text-gray-600 hover:text-pastel-accent transition font-bold bg-white px-5 py-2.5 rounded-full shadow-sm border border-gray-100 hover:shadow-md"
+        >
+          <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
+        </button>
+        <div class="mb-12">
+          <h2 class="text-4xl font-extrabold mb-3 text-gray-900">
+            Koleksi Topi & Tas
+          </h2>
+          <div class="w-20 h-1.5 bg-pastel-accent rounded-full mb-4"></div>
+          <p class="text-gray-500 text-lg max-w-2xl">
+            Lengkapi gayamu dengan sentuhan akhir aksesoris manis berwarna
+            pastel.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <!-- Aksesoris 1 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-pastel-green/20"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1591561954557-26941169b49e?w=400&q=80"
+                alt="Tote Bag Canvas"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Canvas Premium
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Tote Bag Olive
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Tote bag kanvas tebal dengan kapasitas besar, cocok untuk
+                keperluan kuliah maupun hangout bersantai.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 150.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+          <!-- Aksesoris 2 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-pastel-yellow/20"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1584283838384-cb9626b42b10?w=400&q=80"
+                alt="Sling Bag Mini"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Kulit Sintetis
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Sling Bag Mini Lemon
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Tas selempang kecil yang chic dan minimalis, mampu memuat
+                handphone dan dompet lipatmu dengan pas.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 185.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+          <!-- Aksesoris 3 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-pastel-pink/20"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1521369909029-2afed882ba54?w=400&q=80"
+                alt="Topi Baseball"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Twill Cotton
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Topi Baseball Blossom
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Lindungi wajah dari terik matahari sambil tetap terlihat manis
+                dengan topi berdesain simpel ini.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 95.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+          <!-- Aksesoris 4 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-pastel-blue/20"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1589831377283-33cb1cc6ba5d?w=400&q=80"
+                alt="Bucket Hat"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Denim Ringan
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Bucket Hat Denim
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Topi *bucket* kekinian yang reversibel, mudah dipadukan dengan
+                gaya santai *streetwear* kamu.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 115.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HALAMAN EKSPLORASI MUSIM PANAS -->
+    <div
+      id="koleksi-eksplorasi-view"
+      style="display: none"
+      class="py-24 bg-[#FAFAFA] min-h-screen"
+    >
+      <div class="container mx-auto px-4">
+        <button
+          class="btn-kembali mb-10 inline-flex items-center text-gray-600 hover:text-pastel-accent transition font-bold bg-white px-5 py-2.5 rounded-full shadow-sm border border-gray-100 hover:shadow-md"
+        >
+          <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
+        </button>
+        <div class="mb-12">
+          <h2 class="text-4xl font-extrabold mb-3 text-gray-900">
+            Koleksi Musim Panas
+          </h2>
+          <div class="w-20 h-1.5 bg-pastel-accent rounded-full mb-4"></div>
+          <p class="text-gray-500 text-lg max-w-2xl">
+            Dirancang dengan bahan *breathable* dan *flowy* untuk hari yang
+            cerah.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <!-- Produk Eksplorasi 1 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <span
+              class="absolute top-6 right-6 z-10 bg-white/90 backdrop-blur-sm text-xs font-bold px-3 py-1 rounded-full shadow-sm text-yellow-500"
+              >Terbatas</span
+            >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-pastel-yellow/30"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&q=80"
+                alt="Midi Dress"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Katun Rayon
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Midi Dress Floral
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Dress cantik dengan motif floral lembut, sangat sejuk dan nyaman
+                dipakai saat cuaca panas.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 250.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+          <!-- Produk Eksplorasi 2 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-gray-100"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1604136172384-b2e9c43271ec?w=400&q=80"
+                alt="Setelan Linen"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Linen 100%
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Setelan Linen Summer
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Satu set atasan dan bawahan linen. Bebas ribet dalam memadukan
+                warna untuk liburan ke pantai.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 299.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+          <!-- Produk Eksplorasi 3 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-pastel-yellow/20"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400&q=80"
+                alt="Kaos Oversize"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Katun Combed 30s
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Kaos Oversize Sun
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                T-shirt longgar berbahan sangat tipis dan ringan yang tidak
+                membuat gerah di musim panas.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 135.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+          <!-- Produk Eksplorasi 4 -->
+          <div
+            class="bg-white rounded-2xl p-3 border border-gray-100 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl group relative"
+          >
+            <div
+              class="overflow-hidden rounded-xl mb-4 relative aspect-[3/4] bg-pastel-blue/20"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&q=80"
+                alt="Celana Pendek"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <button
+                  class="add-to-cart-quick w-12 h-12 bg-white rounded-full text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all hover:bg-pastel-accent hover:text-white"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pb-2">
+              <p
+                class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1"
+              >
+                Rayon Twill
+              </p>
+              <h3 class="font-bold text-lg text-gray-900 line-clamp-1 mb-1">
+                Celana Pendek Pantai
+              </h3>
+              <p class="text-gray-500 text-sm mb-2 line-clamp-2 product-desc">
+                Celana pendek santai bermotif polos, solusi sempurna untuk hari
+                *weekend* yang rileks.
+              </p>
+              <p class="text-pastel-accent font-extrabold text-lg mt-3">
+                Rp 110.000
+              </p>
+              <button
+                class="w-full mt-4 bg-gray-50 border border-gray-100 text-gray-800 py-2.5 rounded-xl hover:bg-gray-900 hover:text-white transition duration-300 font-bold text-sm"
+              >
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HALAMAN DETAIL PRODUK -->
+    <div
+      id="product-detail-view"
+      style="display: none"
+      class="py-24 bg-[#FAFAFA] min-h-screen"
+    >
+      <div class="container mx-auto px-4 max-w-5xl">
+        <button
+          class="btn-kembali mb-10 inline-flex items-center text-gray-600 hover:text-pastel-accent transition font-bold bg-white px-5 py-2.5 rounded-full shadow-sm border border-gray-100 hover:shadow-md"
+        >
+          <i class="fas fa-arrow-left mr-2"></i> Kembali
+        </button>
+
+        <div
+          class="flex flex-col md:flex-row gap-10 lg:gap-16 bg-white p-6 md:p-10 rounded-3xl shadow-soft border border-gray-100"
+        >
+          <!-- Kiri: Gambar -->
+          <div class="w-full md:w-1/2">
+            <div
+              class="aspect-[3/4] rounded-2xl overflow-hidden bg-pastel-pink/20 relative group"
+            >
+              <img
+                id="detail-img"
+                src=""
+                alt="Detail Produk"
+                class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+              />
+            </div>
+          </div>
+
+          <!-- Kanan: Info -->
+          <div class="w-full md:w-1/2 flex flex-col justify-center">
+            <span
+              id="detail-tag"
+              class="inline-block bg-pastel-pink/50 text-pastel-accent font-bold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider w-max mb-4"
+              >Tag Produk</span
+            >
+            <h2
+              id="detail-title"
+              class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight"
+            >
+              Nama Produk
+            </h2>
+            <p
+              id="detail-price"
+              class="text-3xl font-black text-pastel-accent mb-6"
+            >
+              Rp 0
+            </p>
+
+            <div class="w-16 h-1 bg-gray-100 rounded-full mb-6"></div>
+
+            <h4 class="font-bold text-gray-900 mb-3 text-lg">
+              Deskripsi Produk
+            </h4>
+            <p
+              id="detail-desc"
+              class="text-gray-500 leading-relaxed mb-6 text-lg"
+            >
+              Deskripsi akan tampil di sini...
+            </p>
+
+            <!-- Pilihan Ukuran -->
+            <div class="mb-6">
+              <h4
+                class="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wider"
+              >
+                Pilih Ukuran
+              </h4>
+              <div class="flex gap-3">
+                <button
+                  class="size-btn w-12 h-12 rounded-xl border-2 border-pastel-accent bg-pastel-pink/20 text-pastel-accent font-bold transition flex items-center justify-center"
+                >
+                  S
+                </button>
+                <button
+                  class="size-btn w-12 h-12 rounded-xl border-2 border-gray-100 text-gray-600 hover:border-pastel-accent hover:text-pastel-accent transition flex items-center justify-center bg-white shadow-sm"
+                >
+                  M
+                </button>
+                <button
+                  class="size-btn w-12 h-12 rounded-xl border-2 border-gray-100 text-gray-600 hover:border-pastel-accent hover:text-pastel-accent transition flex items-center justify-center bg-white shadow-sm"
+                >
+                  L
+                </button>
+                <button
+                  class="size-btn w-12 h-12 rounded-xl border-2 border-gray-100 text-gray-600 hover:border-pastel-accent hover:text-pastel-accent transition flex items-center justify-center bg-white shadow-sm"
+                >
+                  XL
+                </button>
+              </div>
+            </div>
+
+            <!-- Accordion Panduan Ukuran -->
+            <div
+              class="mb-8 border border-gray-100 rounded-2xl overflow-hidden bg-white shadow-sm"
+            >
+              <button
+                id="btn-size-guide"
+                class="w-full px-5 py-4 flex justify-between items-center text-left hover:bg-gray-50 transition focus:outline-none"
+              >
+                <span
+                  class="font-bold text-gray-800 flex items-center gap-3 text-sm uppercase tracking-wider"
+                >
+                  <i
+                    class="fas fa-ruler-combined text-pastel-accent text-lg"
+                  ></i>
+                  Panduan Ukuran
+                </span>
+                <i
+                  class="fas fa-chevron-down text-gray-400 transition-transform duration-300"
+                  id="icon-size-guide"
+                ></i>
+              </button>
+              <div
+                id="content-size-guide"
+                class="hidden px-5 pb-5 pt-1 border-t border-gray-50"
+              >
+                <div class="overflow-x-auto">
+                  <table class="w-full text-sm text-left text-gray-600">
+                    <thead
+                      class="text-xs text-gray-900 uppercase bg-gray-50 rounded-lg"
+                    >
+                      <tr>
+                        <th
+                          scope="col"
+                          class="px-4 py-3 rounded-tl-lg font-bold"
+                        >
+                          Ukuran
+                        </th>
+                        <th scope="col" class="px-4 py-3 font-bold">
+                          Lingkar Dada
+                        </th>
+                        <th scope="col" class="px-4 py-3 font-bold">Panjang</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        class="bg-white border-b border-gray-100 hover:bg-gray-50 transition"
+                      >
+                        <th
+                          scope="row"
+                          class="px-4 py-2 font-bold text-gray-900"
+                        >
+                          S
+                        </th>
+                        <td class="px-4 py-2">92 cm</td>
+                        <td class="px-4 py-2">65 cm</td>
+                      </tr>
+                      <tr
+                        class="bg-white border-b border-gray-100 hover:bg-gray-50 transition"
+                      >
+                        <th
+                          scope="row"
+                          class="px-4 py-2 font-bold text-gray-900"
+                        >
+                          M
+                        </th>
+                        <td class="px-4 py-2">96 cm</td>
+                        <td class="px-4 py-2">67 cm</td>
+                      </tr>
+                      <tr
+                        class="bg-white border-b border-gray-100 hover:bg-gray-50 transition"
+                      >
+                        <th
+                          scope="row"
+                          class="px-4 py-2 font-bold text-gray-900"
+                        >
+                          L
+                        </th>
+                        <td class="px-4 py-2">100 cm</td>
+                        <td class="px-4 py-2">69 cm</td>
+                      </tr>
+                      <tr
+                        class="bg-white hover:bg-gray-50 transition rounded-b-lg"
+                      >
+                        <th
+                          scope="row"
+                          class="px-4 py-2 font-bold text-gray-900"
+                        >
+                          XL
+                        </th>
+                        <td class="px-4 py-2">104 cm</td>
+                        <td class="px-4 py-2">71 cm</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="text-xs text-gray-400 mt-4 italic">
+                  *Toleransi ukuran 1-2 cm karena proses penjahitan massal.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-auto pt-6 border-t border-gray-100">
+              <button
+                id="btn-add-detail"
+                class="w-full bg-gray-900 text-white py-4 rounded-2xl font-bold text-lg hover:bg-pastel-accent transition duration-300 shadow-xl shadow-gray-900/20 flex justify-center items-center gap-3"
+              >
+                <i class="fas fa-shopping-bag"></i> Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HALAMAN HASIL PENCARIAN -->
+    <div
+      id="search-results-view"
+      style="display: none"
+      class="py-24 bg-[#FAFAFA] min-h-screen"
+    >
+      <div class="container mx-auto px-4">
+        <button
+          class="btn-kembali mb-10 inline-flex items-center text-gray-600 hover:text-pastel-accent transition font-bold bg-white px-5 py-2.5 rounded-full shadow-sm border border-gray-100 hover:shadow-md"
+        >
+          <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
+        </button>
+
+        <div class="mb-12">
+          <h2 class="text-4xl font-extrabold mb-3 text-gray-900">
+            Hasil Pencarian
+            <span class="text-pastel-accent" id="search-keyword">"..."</span>
+          </h2>
+          <div class="w-20 h-1.5 bg-pastel-accent rounded-full mb-4"></div>
+          <p id="search-summary" class="text-gray-500 text-lg"></p>
+        </div>
+
+        <div
+          id="search-results-grid"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+        >
+          <!-- Dynamic cards populated by search logic -->
+        </div>
+      </div>
+    </div>
+
+    <!-- HALAMAN CHECKOUT -->
+    <div
+      id="checkout-view"
+      style="display: none"
+      class="py-16 bg-gray-50 min-h-screen"
+    >
+      <div class="container mx-auto px-4">
+        <button
+          class="btn-kembali mb-8 inline-flex items-center text-gray-600 hover:text-pastel-accent transition font-bold bg-white px-5 py-2.5 rounded-full shadow-sm border border-gray-100 hover:shadow-md"
+        >
+          <i class="fas fa-arrow-left mr-2"></i> Kembali Belanja
+        </button>
+        <h2 class="text-3xl font-extrabold mb-8 text-gray-900">
+          Checkout Pesanan
+        </h2>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+          <!-- KIRI: Form -->
+          <div class="w-full lg:w-2/3 space-y-8">
+            <!-- Box Alamat -->
+            <div
+              class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100"
+            >
+              <div class="flex justify-between items-center mb-6">
+                <h3
+                  class="text-xl font-bold text-gray-800 flex items-center gap-2"
+                >
+                  <i class="fas fa-map-marker-alt text-pastel-accent"></i>
+                  Alamat Pengiriman
+                </h3>
+                <button
+                  class="text-sm text-pastel-accent font-bold hover:underline bg-pastel-pink px-3 py-1 rounded-full"
+                >
+                  Ubah
+                </button>
+              </div>
+              <div class="space-y-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2"
+                      >Nama Penerima</label
+                    >
+                    <input
+                      type="text"
+                      value="Amanda Putri"
+                      class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:bg-white focus:outline-none focus:border-pastel-accent focus:ring-2 focus:ring-pastel-accent/20 transition"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2"
+                      >Nomor Telepon</label
+                    >
+                    <input
+                      type="text"
+                      value="081234567890"
+                      class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:bg-white focus:outline-none focus:border-pastel-accent focus:ring-2 focus:ring-pastel-accent/20 transition"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-bold text-gray-700 mb-2"
+                    >Alamat Lengkap</label
+                  >
+                  <textarea
+                    class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:bg-white focus:outline-none focus:border-pastel-accent focus:ring-2 focus:ring-pastel-accent/20 transition"
+                    rows="3"
+                  >
+Jl. Mawar Indah No. 12, RT 03/RW 05, Kebayoran Baru, Jakarta Selatan, 12160</textarea
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Box Metode Pembayaran -->
+            <div
+              class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100"
+            >
+              <h3
+                class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2"
+              >
+                <i class="fas fa-wallet text-pastel-accent"></i> Metode
+                Pembayaran
+              </h3>
+              <div
+                class="grid grid-cols-2 md:grid-cols-3 gap-4 payment-methods mb-6"
+              >
+                <!-- Selected Style -->
+                <div
+                  class="payment-option border-2 border-pastel-accent bg-pastel-pink/20 rounded-2xl p-5 text-center cursor-pointer transition relative overflow-hidden"
+                  data-method="bca"
+                >
+                  <div
+                    class="absolute top-0 right-0 bg-pastel-accent text-white w-6 h-6 rounded-bl-xl flex items-center justify-center text-xs"
+                  >
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <i
+                    class="fas fa-university text-3xl text-blue-600 mb-3 block"
+                  ></i>
+                  <span class="font-bold text-sm text-gray-900"
+                    >Transfer BCA</span
+                  >
+                </div>
+                <!-- Unselected Style -->
+                <div
+                  class="payment-option border-2 border-gray-100 rounded-2xl p-5 text-center cursor-pointer hover:border-pastel-accent hover:bg-pastel-pink/10 transition"
+                  data-method="gopay"
+                >
+                  <i
+                    class="fas fa-mobile-alt text-3xl text-green-500 mb-3 block"
+                  ></i>
+                  <span class="font-bold text-sm text-gray-700">GoPay</span>
+                </div>
+                <!-- Unselected Style -->
+                <div
+                  class="payment-option border-2 border-gray-100 rounded-2xl p-5 text-center cursor-pointer hover:border-pastel-accent hover:bg-pastel-pink/10 transition"
+                  data-method="cod"
+                >
+                  <i
+                    class="fas fa-money-bill-wave text-3xl text-gray-500 mb-3 block"
+                  ></i>
+                  <span class="font-bold text-sm text-gray-700">COD</span>
+                </div>
+              </div>
+
+              <!-- Detail Pembayaran Dinamis -->
+              <div
+                id="payment-details"
+                class="bg-gray-50/70 rounded-2xl p-5 border border-gray-200"
+              >
+                <!-- BCA Detail (Default) -->
+                <div id="detail-bca" class="payment-detail-form">
+                  <p class="text-sm text-gray-600 mb-4">
+                    Transfer ke rekening berikut, lalu masukkan nomor rekening
+                    Anda untuk mempermudah verifikasi kami.
+                  </p>
+                  <div
+                    class="bg-white p-4 rounded-xl border border-gray-200 mb-4 flex justify-between items-center shadow-sm"
+                  >
+                    <div>
+                      <span
+                        class="block text-xs text-gray-400 font-bold uppercase tracking-wider mb-1"
+                        >BCA a.n Rebeka Apparel</span
+                      >
+                      <span
+                        class="block text-xl font-black text-gray-900 tracking-wider"
+                        >8720 123 456</span
+                      >
+                    </div>
+                    <button
+                      class="btn-copy-rek text-pastel-accent bg-pastel-pink/30 hover:bg-pastel-pink px-4 py-2 rounded-xl text-sm font-bold transition flex items-center gap-2"
+                    >
+                      <i class="fas fa-copy"></i> Salin
+                    </button>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2"
+                      >Nomor Rekening Anda</label
+                    >
+                    <input
+                      type="text"
+                      placeholder="Contoh: 1234567890"
+                      class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 focus:bg-white focus:outline-none focus:border-pastel-accent focus:ring-2 focus:ring-pastel-accent/20 transition"
+                    />
+                  </div>
+                </div>
+
+                <!-- GoPay Detail -->
+                <div id="detail-gopay" class="payment-detail-form hidden">
+                  <p class="text-sm text-gray-600 mb-4">
+                    Masukkan nomor HP yang terdaftar di GoPay. Kami akan
+                    mengirimkan notifikasi tagihan ke aplikasi Gojek Anda.
+                  </p>
+                  <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2"
+                      >Nomor HP (GoPay)</label
+                    >
+                    <div class="relative">
+                      <span
+                        class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 font-bold"
+                        >+62</span
+                      >
+                      <input
+                        type="text"
+                        placeholder="81234567890"
+                        class="w-full bg-white border border-gray-200 rounded-xl pl-12 pr-4 py-3 focus:bg-white focus:outline-none focus:border-pastel-accent focus:ring-2 focus:ring-pastel-accent/20 transition"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- COD Detail -->
+                <div id="detail-cod" class="payment-detail-form hidden">
+                  <div
+                    class="flex items-start gap-3 bg-yellow-50 text-yellow-800 p-4 rounded-xl border border-yellow-200"
+                  >
+                    <i class="fas fa-info-circle mt-1"></i>
+                    <p class="text-sm font-medium">
+                      Pembayaran tunai akan dilakukan langsung ke kurir saat
+                      pesanan tiba di tujuan. Mohon siapkan uang pas sesuai
+                      total tagihan.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KANAN: Ringkasan -->
+          <div class="w-full lg:w-1/3">
+            <div
+              class="bg-white p-8 rounded-3xl shadow-soft border border-gray-100 sticky top-28"
+            >
+              <h3
+                class="text-xl font-bold text-gray-900 mb-6 border-b border-gray-100 pb-4"
+              >
+                Ringkasan Pesanan
+              </h3>
+
+              <div
+                id="checkout-items"
+                class="space-y-4 mb-6 max-h-64 overflow-y-auto pr-2 custom-scrollbar"
+              >
+                <!-- Items dari JS -->
+              </div>
+
+              <div
+                class="space-y-3 text-sm text-gray-600 border-t border-gray-100 pt-6 mb-6"
+              >
+                <div class="flex justify-between">
+                  <span>Subtotal Produk</span>
+                  <span id="checkout-subtotal" class="font-bold text-gray-900"
+                    >Rp 0</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>Pengiriman (Reguler)</span>
+                  <span id="checkout-shipping" class="font-bold text-gray-900"
+                    >Rp 15.000</span
+                  >
+                  <input
+                    type="radio"
+                    name="shipping"
+                    value="15000"
+                    class="hidden"
+                    checked
+                  />
+                </div>
+              </div>
+
+              <div
+                class="flex justify-between items-center border-t border-gray-200 pt-6 mb-8"
+              >
+                <span class="font-extrabold text-gray-900 text-lg">Total</span>
+                <span
+                  id="checkout-grand-total"
+                  class="font-black text-2xl text-pastel-accent"
+                  >Rp 0</span
+                >
+              </div>
+
+              <button
+                id="btn-buat-pesanan"
+                class="w-full bg-gray-900 text-white py-4 rounded-2xl font-bold text-lg hover:bg-pastel-accent transition duration-300 shadow-lg hover:shadow-pastel-accent/30 flex justify-center items-center gap-2"
+              >
+                Bayar Sekarang <i class="fas fa-lock text-sm opacity-80"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HALAMAN CARA PEMESANAN -->
+    <div
+      id="cara-pemesanan-view"
+      style="display: none"
+      class="py-24 bg-[#FAFAFA] min-h-screen"
+    >
+      <div class="container mx-auto px-4 max-w-4xl">
+        <button
+          class="btn-kembali mb-10 inline-flex items-center text-gray-600 hover:text-pastel-accent transition font-bold bg-white px-5 py-2.5 rounded-full shadow-sm border border-gray-100 hover:shadow-md"
+        >
+          <i class="fas fa-arrow-left mr-2"></i> Kembali
+        </button>
+
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-gray-900">
+            Cara Pemesanan
+          </h2>
+          <div
+            class="w-20 h-1.5 bg-pastel-accent mx-auto rounded-full mb-6"
+          ></div>
+          <p class="text-gray-500 text-lg">
+            Ikuti langkah-langkah mudah berikut untuk mendapatkan koleksi pastel
+            favoritmu.
+          </p>
+        </div>
+
+        <div
+          class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-pastel-pink before:via-pastel-accent before:to-pastel-blue"
+        >
+          <!-- Step 1 -->
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-pastel-pink text-pastel-accent font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
+            >
+              1
+            </div>
+            <div
+              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="flex items-center gap-3 mb-3">
+                <div
+                  class="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-pink-500"
+                >
+                  <i class="fas fa-search"></i>
+                </div>
+                <h3 class="font-bold text-xl text-gray-900">Pilih Produk</h3>
+              </div>
+              <p class="text-gray-500 leading-relaxed">
+                Jelajahi koleksi kami melalui menu kategori atau gunakan fitur
+                pencarian cerdas kami untuk menemukan produk yang kamu inginkan.
+                Klik kartu produk untuk melihat deskripsi detail.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-pastel-blue text-blue-500 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
+            >
+              2
+            </div>
+            <div
+              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="flex items-center gap-3 mb-3">
+                <div
+                  class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-500"
+                >
+                  <i class="fas fa-shopping-bag"></i>
+                </div>
+                <h3 class="font-bold text-xl text-gray-900">
+                  Tambah ke Keranjang
+                </h3>
+              </div>
+              <p class="text-gray-500 leading-relaxed">
+                Pilih ukuran yang sesuai pada panduan, lalu klik "Tambah ke
+                Keranjang". Kamu bisa melanjutkan belanja item lainnya atau
+                langsung membuka keranjang di pojok kanan atas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-pastel-green text-green-600 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
+            >
+              3
+            </div>
+            <div
+              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="flex items-center gap-3 mb-3">
+                <div
+                  class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600"
+                >
+                  <i class="fas fa-truck"></i>
+                </div>
+                <h3 class="font-bold text-xl text-gray-900">
+                  Checkout & Alamat
+                </h3>
+              </div>
+              <p class="text-gray-500 leading-relaxed">
+                Periksa kembali pesananmu lalu klik "Checkout Sekarang". Isi
+                formulir alamat pengiriman dan nomor telepon dengan benar agar
+                kurir tidak tersasar saat mengirim paket.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-pastel-yellow text-yellow-600 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
+            >
+              4
+            </div>
+            <div
+              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="flex items-center gap-3 mb-3">
+                <div
+                  class="w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-600"
+                >
+                  <i class="fas fa-wallet"></i>
+                </div>
+                <h3 class="font-bold text-xl text-gray-900">Pembayaran</h3>
+              </div>
+              <p class="text-gray-500 leading-relaxed">
+                Pilih metode pembayaran yang kamu inginkan (Transfer Bank BCA,
+                GoPay, atau COD). Ikuti instruksi detail yang tertera di layar
+                untuk menyelesaikan transaksi.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-pastel-accent text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
+            >
+              <i class="fas fa-check"></i>
+            </div>
+            <div
+              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-lg transition duration-300"
+            >
+              <div class="flex items-center gap-3 mb-3">
+                <div
+                  class="w-10 h-10 rounded-full bg-pastel-pink flex items-center justify-center text-pastel-accent"
+                >
+                  <i class="fas fa-box-open"></i>
+                </div>
+                <h3 class="font-bold text-xl text-gray-900">
+                  Tunggu Paket Datang
+                </h3>
+              </div>
+              <p class="text-gray-500 leading-relaxed">
+                Setelah pembayaran terverifikasi atau pesanan COD dikonfirmasi,
+                kami akan segera mengemas dan mengirimkan baju cantikmu dengan
+                aman ke depan pintu!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="mt-16 text-center bg-pastel-blue/20 p-8 rounded-3xl border border-blue-100"
+        >
+          <h3 class="text-xl font-bold text-gray-900 mb-2">
+            Masih punya pertanyaan?
+          </h3>
+          <p class="text-gray-600 mb-6">
+            Tim layanan pelanggan kami siap membantu kamu kapan saja.
+          </p>
+          <a
+            href="https://wa.me/   "
+            class="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-800 px-6 py-3 rounded-full font-bold hover:bg-gray-900 hover:text-white transition duration-300 shadow-sm"
+          >
+            <i class="fab fa-whatsapp text-green-500"></i> Hubungi CS via
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. FOOTER -->
+    <!-- 5. FOOTER -->
+    <footer
+      id="kontak"
+      class="bg-white pt-20 pb-10 border-t border-gray-100 mt-auto"
+    >
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <!-- Brand Info -->
+          <div class="md:col-span-2">
+            <a
+              href="#"
+              class="nav-beranda text-3xl font-extrabold tracking-tight text-gray-900 mb-6 block"
+            >
+              Rebeka<span class="text-pastel-accent font-medium">Apparel</span>
+            </a>
+            <p class="text-gray-500 mb-8 max-w-sm leading-relaxed">
+              Membawa keceriaan dan kenyamanan melalui koleksi pakaian berwarna
+              pastel yang dirancang dengan penuh cinta.
+            </p>
+            <div class="flex space-x-3">
+              <!-- Link Instagram -->
+              <a
+                href="https://www.instagram.com/reel/DY80XAzJy4Z/?utm_source=ig_web_button_share_sheet"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-12 h-12 rounded-full bg-gray-50 text-gray-600 flex justify-center items-center hover:bg-pastel-pink hover:text-pastel-accent transition duration-300"
+              >
+                <i class="fab fa-instagram text-xl"></i>
+              </a>
+
+              <!-- Link TikTok -->
+              <a
+                href="https://www.tiktok.com/@plengerfamilyyy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-12 h-12 rounded-full bg-gray-50 text-gray-600 flex justify-center items-center hover:bg-blue-50 hover:text-blue-500 transition duration-300"
+              >
+                <i class="fab fa-tiktok text-xl"></i>
+              </a>
+
+              <!-- Link WhatsApp (Ganti 628... dengan nomor WA yang aktif) -->
+              <a
+                href="https://wa.me/6281234567890"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-12 h-12 rounded-full bg-gray-50 text-gray-600 flex justify-center items-center hover:bg-green-50 hover:text-green-500 transition duration-300"
+              >
+                <i class="fab fa-whatsapp text-xl"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Links -->
+          <div>
+            <h4 class="font-bold text-gray-900 mb-6 text-lg">Layanan</h4>
+            <ul class="space-y-4 text-gray-500 font-medium">
+              <li>
+                <a
+                  href="#"
+                  id="link-cara-pemesanan"
+                  class="hover:text-pastel-accent transition"
+                  >Cara Pemesanan</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pastel-accent transition"
+                  >Pengembalian</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pastel-accent transition"
+                  >Panduan Ukuran</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pastel-accent transition">FAQ</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div>
+            <h4 class="font-bold text-gray-900 mb-6 text-lg">Newsletter</h4>
+            <p class="text-gray-500 text-sm mb-4 leading-relaxed">
+              Dapatkan info promo dan koleksi terbaru kami.
+            </p>
+            <div class="flex">
+              <input
+                type="email"
+                placeholder="Email kamu..."
+                class="w-full px-5 py-3 bg-gray-50 border border-gray-100 rounded-l-2xl focus:outline-none focus:ring-2 focus:ring-pastel-accent/20"
+              />
+              <button
+                class="bg-gray-900 text-white px-6 py-3 rounded-r-2xl hover:bg-pastel-accent transition font-bold"
+              >
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-100 pt-8 text-center text-gray-400 text-sm font-medium"
+        >
+          &copy; 2026 Rebeka Apparel. Didesain dengan
+          <i class="fas fa-heart text-pastel-accent mx-1 animate-pulse"></i>
+          untuk kenyamanan Anda.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cart Overlay & Sidebar -->
+    <div
+      id="cart-overlay"
+      class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-50 transition-opacity duration-300 opacity-0"
+    ></div>
+    <div
+      id="cart-sidebar"
+      class="fixed top-0 right-0 h-full w-full sm:w-[400px] bg-white shadow-2xl transform translate-x-full transition-transform duration-500 z-50 flex flex-col rounded-l-3xl"
+    >
+      <div
+        class="p-6 border-b border-gray-100 flex justify-between items-center bg-white rounded-tl-3xl"
+      >
+        <h2 class="text-2xl font-extrabold text-gray-900">
+          Keranjang <span class="text-pastel-accent">Belanja</span>
+        </h2>
+        <button
+          id="close-cart"
+          class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-500 hover:bg-pastel-pink hover:text-pastel-accent transition"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div
+        id="cart-items"
+        class="flex-1 overflow-y-auto p-6 space-y-4 bg-[#FAFAFA] custom-scrollbar"
+      >
+        <!-- Diisi JS -->
+      </div>
+      <div
+        class="p-6 bg-white border-t border-gray-100 rounded-bl-3xl shadow-[0_-10px_20px_rgba(0,0,0,0.02)]"
+      >
+        <div class="flex justify-between items-center mb-6">
+          <span class="font-bold text-gray-500">Total Harga</span>
+          <span id="cart-total" class="font-black text-2xl text-gray-900"
+            >Rp 0</span
+          >
+        </div>
+        <button
+          id="checkout-btn"
+          class="w-full bg-gray-900 text-white py-4 rounded-2xl font-bold text-lg hover:bg-pastel-accent transition duration-300 shadow-xl shadow-gray-900/20"
+        >
+          Checkout Sekarang
+        </button>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div
+      id="toast"
+      class="fixed bottom-6 left-1/2 transform -translate-x-1/2 translate-y-20 opacity-0 bg-gray-900 text-white px-6 py-4 rounded-2xl shadow-2xl transition-all duration-500 z-[60] flex items-center space-x-3 pointer-events-none border border-gray-800"
+    >
+      <div
+        class="w-8 h-8 rounded-full bg-pastel-accent/20 flex items-center justify-center shrink-0"
+      >
+        <i class="fas fa-check text-pastel-accent"></i>
+      </div>
+      <span class="font-medium whitespace-nowrap"
+        >Produk berhasil ditambahkan!</span
+      >
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      $(document).ready(function () {
+        // Animasi Welcome Banner
+        setTimeout(() => {
+          $("#banner-content")
+            .removeClass("translate-y-4")
+            .addClass("translate-y-0");
+        }, 100);
+
+        $("#btn-enter-site").click(function () {
+          $("#banner-content").addClass("-translate-y-10 opacity-0");
+          setTimeout(() => {
+            $("#welcome-banner").fadeOut(800, function () {
+              $("body")
+                .removeClass("overflow-hidden")
+                .addClass("overflow-x-hidden");
+              $(this).remove();
+            });
+          }, 300);
+        });
+
+        // Database Produk untuk Pencarian
+        let productsDatabase = [];
+
+        // Membangun Database Produk dari HTML secara dinamis
+        function buildProductDatabase() {
+          productsDatabase = [];
+          const pages = [
+            "#koleksi-baju-view",
+            "#koleksi-celana-view",
+            "#koleksi-topi-view",
+            "#koleksi-eksplorasi-view",
+          ];
+          const categories = [
+            "Atasan & Kemeja",
+            "Celana & Bawahan",
+            "Topi & Tas",
+            "Koleksi Eksklusif Musim Panas",
+          ];
+
+          pages.forEach((page, index) => {
+            $(`${page} .grid > div`).each(function () {
+              const card = $(this);
+              const name = card.find("h3").text().trim();
+              const priceText = card.find(".text-pastel-accent").text().trim();
+              const img = card.find("img").attr("src");
+              const desc =
+                card.find(".product-desc").text().trim() ||
+                card.find("p").first().text().trim();
+              if (name) {
+                productsDatabase.push({
+                  name: name,
+                  priceText: priceText,
+                  img: img,
+                  desc: desc,
+                  category: categories[index],
+                  element: card.clone(),
+                });
+              }
+            });
+          });
+        }
+
+        // Fungsi Pencarian
+        function performSearch(query) {
+          query = query.trim().toLowerCase();
+          if (!query) return;
+
+          $("#search-keyword").text(`"${query}"`);
+
+          const matches = productsDatabase.filter((product) => {
+            return (
+              product.name.toLowerCase().includes(query) ||
+              product.category.toLowerCase().includes(query) ||
+              product.desc.toLowerCase().includes(query)
+            );
+          });
+
+          $("#search-summary").text(
+            `Ditemukan ${matches.length} produk yang cocok.`,
+          );
+
+          const grid = $("#search-results-grid");
+          grid.empty();
+
+          if (matches.length === 0) {
+            grid.html(`
+                        <div class="col-span-full flex flex-col items-center justify-center py-16 text-gray-400">
+                            <i class="fas fa-search text-5xl mb-4 text-gray-200"></i>
+                            <p class="text-lg font-bold">Maaf, produk tidak ditemukan.</p>
+                            <p class="text-sm mt-1 text-gray-400">Coba kata kunci lain seperti "blouse", "kemeja", atau "kulot".</p>
+                        </div>
+                    `);
+          } else {
+            matches.forEach((product) => {
+              grid.append(product.element.clone());
+            });
+          }
+
+          switchView("#search-results-view");
+        }
+
+        $("#search-input-desktop").keypress(function (e) {
+          if (e.which === 13) performSearch($(this).val());
+        });
+
+        $("#search-input-mobile").keypress(function (e) {
+          if (e.which === 13) {
+            performSearch($(this).val());
+            $("#mobile-menu").slideUp(300);
+          }
+        });
+
+        // Animasi Header saat Scroll
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 20) {
+            $("header")
+              .addClass("shadow-md bg-white/95")
+              .removeClass("bg-white/80 shadow-sm");
+          } else {
+            $("header")
+              .removeClass("shadow-md bg-white/95")
+              .addClass("bg-white/80 shadow-sm");
+          }
+        });
+
+        $("#menu-btn").click(function () {
+          $("#mobile-menu").slideToggle(300);
+        });
+        $("#mobile-menu a").click(function () {
+          $("#mobile-menu").slideUp(300);
+        });
+        $(window).resize(function () {
+          if ($(window).width() >= 768) $("#mobile-menu").css("display", "");
+        });
+
+        // View Switcher & Smooth Scroll Navigasi
+        let viewHistory = ["#home-view"];
+
+        function switchView(viewId, preventScroll = false) {
+          if (viewId === "#home-view") viewHistory = ["#home-view"];
+          else if (viewHistory[viewHistory.length - 1] !== viewId)
+            viewHistory.push(viewId);
+
+          $('body > div[id$="-view"]').hide();
+          $(viewId).fadeIn(600);
+
+          if (!preventScroll) window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        $(".btn-kembali").click(function () {
+          if (viewHistory.length > 1) {
+            viewHistory.pop();
+            const prevView = viewHistory[viewHistory.length - 1];
+            $('body > div[id$="-view"]').hide();
+            $(prevView).fadeIn(600);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          } else switchView("#home-view");
+        });
+
+        $("#btn-baju").click(() => switchView("#koleksi-baju-view"));
+        $("#btn-celana").click(() => switchView("#koleksi-celana-view"));
+        $("#btn-topi").click(() => switchView("#koleksi-topi-view"));
+        $("#btn-eksplorasi").click(() =>
+          switchView("#koleksi-eksplorasi-view"),
+        );
+        $("#link-cara-pemesanan").click(function (e) {
+          e.preventDefault();
+          switchView("#cara-pemesanan-view");
+        });
+
+        $(".nav-beranda")
+          .off("click")
+          .on("click", function (e) {
+            const href = $(this).attr("href");
+            if (href && href.startsWith("#")) {
+              e.preventDefault();
+              const isSection = href !== "#";
+              switchView("#home-view", isSection);
+
+              if (isSection) {
+                setTimeout(() => {
+                  const target = $(href);
+                  if (target.length) {
+                    $("html, body").animate(
+                      { scrollTop: target.offset().top - 80 },
+                      600,
+                    );
+                  }
+                }, 50);
+              }
+            } else {
+              switchView("#home-view");
+            }
+          });
+
+        // Slider
+        let currentSlide = 0;
+        const slides = $(".slide");
+        const totalSlides = slides.length;
+        function showSlide(index) {
+          slides.removeClass("active");
+          $(slides[index]).addClass("active");
+        }
+        $("#next-slide").click(() => {
+          currentSlide = (currentSlide + 1) % totalSlides;
+          showSlide(currentSlide);
+        });
+        $("#prev-slide").click(() => {
+          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+          showSlide(currentSlide);
+        });
+        setInterval(() => {
+          if ($("#home-view").is(":visible")) {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+          }
+        }, 6000);
+
+        // Cart Logic
+        let cart = [];
+
+        $("#cart-btn").click(function () {
+          $("#cart-overlay").removeClass("hidden");
+          setTimeout(() => {
+            $("#cart-overlay").removeClass("opacity-0");
+            $("#cart-sidebar").removeClass("translate-x-full");
+          }, 10);
+        });
+
+        $("#close-cart, #cart-overlay").click(function () {
+          $("#cart-sidebar").addClass("translate-x-full");
+          $("#cart-overlay").addClass("opacity-0");
+          setTimeout(() => $("#cart-overlay").addClass("hidden"), 300);
+        });
+
+        $(document).on(
+          "click",
+          '[id^="koleksi-"] .grid button, .add-to-cart-quick, #search-results-grid button',
+          function (e) {
+            e.stopPropagation();
+            const productCard = $(this).closest(".group, .bg-white");
+            const name = productCard.find("h3").text().trim();
+            const priceText = productCard
+              .find(
+                "p.text-pastel-accent, span.text-pastel-accent, .text-pastel-accent",
+              )
+              .first()
+              .text()
+              .trim();
+            const price =
+              parseInt(String(priceText).replace(/[^0-9]/g, "")) || 0;
+            const img = productCard.find("img").attr("src");
+            const id = name
+              ? name.toLowerCase().replace(/[^a-z0-9]/g, "-")
+              : "";
+
+            if (!name || isNaN(price) || price === 0) return;
+
+            const existingItem = cart.find((item) => item.id === id);
+            if (existingItem) existingItem.qty += 1;
+            else cart.push({ id, name, price, img, qty: 1 });
+
+            updateCartUI();
+            showToast("Ditambahkan ke keranjang!");
+          },
+        );
+
+        // Klik Kartu Produk Menuju Halaman Detail
+        $(document).on(
+          "click",
+          '[id^="koleksi-"] .grid > div, #search-results-grid > div',
+          function (e) {
+            if ($(e.target).closest("button").length) return;
+
+            const productCard = $(this);
+            const name = productCard.find("h3").text().trim();
+            const priceText = productCard
+              .find(
+                "p.text-pastel-accent, span.text-pastel-accent, .text-pastel-accent",
+              )
+              .first()
+              .text()
+              .trim();
+            const img = productCard.find("img").attr("src");
+            const desc = productCard.find(".product-desc").text().trim();
+            const tag =
+              productCard.find("p.text-xs").first().text().trim() ||
+              "Produk Spesial";
+
+            $("#detail-img").attr("src", img);
+            $("#detail-title").text(name);
+            $("#detail-price").text(priceText);
+            $("#detail-desc").text(desc);
+            $("#detail-tag").text(tag);
+
+            $("#btn-add-detail").data("name", name);
+            $("#btn-add-detail").data("price", priceText);
+            $("#btn-add-detail").data("img", img);
+
+            switchView("#product-detail-view");
+          },
+        );
+
+        // Tombol "Tambah ke Keranjang" Halaman Detail
+        $("#btn-add-detail").click(function () {
+          const name = $(this).data("name");
+          const priceText = String($(this).data("price"));
+          const price = parseInt(priceText.replace(/[^0-9]/g, "")) || 0;
+          const img = $(this).data("img");
+          const id = name ? name.toLowerCase().replace(/[^a-z0-9]/g, "-") : "";
+
+          if (!name || isNaN(price) || price === 0) return;
+
+          const existingItem = cart.find((item) => item.id === id);
+          if (existingItem) existingItem.qty += 1;
+          else cart.push({ id, name, price, img, qty: 1 });
+
+          updateCartUI();
+          showToast("Ditambahkan ke keranjang!");
+        });
+
+        $("#btn-size-guide").click(function () {
+          $("#content-size-guide").slideToggle(300);
+          $("#icon-size-guide").toggleClass("rotate-180");
+        });
+
+        $(".size-btn").click(function () {
+          $(".size-btn")
+            .removeClass(
+              "border-pastel-accent bg-pastel-pink/20 text-pastel-accent",
+            )
+            .addClass("border-gray-100 bg-white text-gray-600");
+          $(this)
+            .removeClass("border-gray-100 bg-white text-gray-600")
+            .addClass(
+              "border-pastel-accent bg-pastel-pink/20 text-pastel-accent",
+            );
+        });
+
+        function updateCartUI() {
+          const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+          $("#cart-count").text(totalItems);
+
+          let html = "";
+          let total = 0;
+
+          if (cart.length === 0) {
+            html =
+              '<div class="flex flex-col items-center justify-center h-full text-gray-400 mt-10"><i class="fas fa-shopping-basket text-5xl mb-4 text-gray-200"></i><p>Keranjangmu masih kosong.</p></div>';
+          } else {
+            cart.forEach((item) => {
+              total += item.price * item.qty;
+              html += `
+                            <div class="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-gray-50 relative group">
+                                <img src="${item.img}" class="w-20 h-24 object-cover rounded-xl bg-gray-100">
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-gray-900 line-clamp-1">${item.name}</h4>
+                                    <p class="text-pastel-accent font-extrabold text-sm mb-3">Rp ${item.price.toLocaleString("id-ID")}</p>
+                                    <div class="flex items-center bg-gray-50 rounded-lg w-max border border-gray-100">
+                                        <button class="btn-minus w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-900 transition" data-id="${item.id}">-</button>
+                                        <span class="text-sm font-bold w-6 text-center text-gray-800">${item.qty}</span>
+                                        <button class="btn-plus w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-900 transition" data-id="${item.id}">+</button>
+                                    </div>
+                                </div>
+                                <button class="btn-remove absolute top-4 right-4 w-8 h-8 rounded-full bg-red-50 text-red-500 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-500 hover:text-white" data-id="${item.id}">
+                                    <i class="fas fa-trash-alt text-xs"></i>
+                                </button>
+                            </div>
+                        `;
+            });
+          }
+
+          $("#cart-items").html(html);
+          $("#cart-total").text("Rp " + total.toLocaleString("id-ID"));
+        }
+
+        $("#cart-items").on("click", ".btn-plus", function () {
+          const item = cart.find((i) => i.id === $(this).data("id"));
+          if (item) item.qty++;
+          updateCartUI();
+        });
+
+        $("#cart-items").on("click", ".btn-minus", function () {
+          const id = $(this).data("id");
+          const item = cart.find((i) => i.id === id);
+          if (item && item.qty > 1) item.qty--;
+          else if (item && item.qty === 1)
+            cart = cart.filter((i) => i.id !== id);
+          updateCartUI();
+        });
+
+        $("#cart-items").on("click", ".btn-remove", function () {
+          cart = cart.filter((i) => i.id !== $(this).data("id"));
+          updateCartUI();
+        });
+
+        $("#checkout-btn").click(function () {
+          if (cart.length === 0) return showToast("Keranjang kosong!", "error");
+
+          $("#close-cart").click();
+          switchView("#checkout-view");
+          renderCheckoutSummary();
+        });
+
+        function renderCheckoutSummary() {
+          let html = "";
+          let subtotal = 0;
+          cart.forEach((item) => {
+            subtotal += item.price * item.qty;
+            html += `
+                        <div class="flex items-center gap-4 bg-gray-50/50 p-3 rounded-xl">
+                            <img src="${item.img}" class="w-14 h-14 object-cover rounded-lg border border-gray-200">
+                            <div class="flex-1">
+                                <h4 class="text-sm font-bold text-gray-900 line-clamp-1">${item.name}</h4>
+                                <p class="text-xs text-gray-500 font-medium">${item.qty} x Rp ${item.price.toLocaleString("id-ID")}</p>
+                            </div>
+                            <span class="font-extrabold text-sm text-gray-900">Rp ${(item.price * item.qty).toLocaleString("id-ID")}</span>
+                        </div>
+                    `;
+          });
+
+          $("#checkout-items").html(html);
+          const shippingCost = parseInt(
+            $('input[name="shipping"]:checked').val(),
+          );
+          $("#checkout-subtotal").text(
+            "Rp " + subtotal.toLocaleString("id-ID"),
+          );
+          $("#checkout-grand-total").text(
+            "Rp " + (subtotal + shippingCost).toLocaleString("id-ID"),
+          );
+        }
+
+        $(".payment-option").click(function () {
+          $(".payment-option")
+            .removeClass("border-pastel-accent bg-pastel-pink/20")
+            .addClass("border-gray-100");
+          $(".payment-option").find(".absolute").remove();
+
+          $(this)
+            .removeClass("border-gray-100")
+            .addClass("border-pastel-accent bg-pastel-pink/20");
+          $(this).append(
+            '<div class="absolute top-0 right-0 bg-pastel-accent text-white w-6 h-6 rounded-bl-xl flex items-center justify-center text-xs"><i class="fas fa-check"></i></div>',
+          );
+
+          const method = $(this).data("method");
+          $(".payment-detail-form").addClass("hidden");
+          $("#detail-" + method).removeClass("hidden");
+        });
+
+        $(".btn-copy-rek").click(function () {
+          const tempInput = document.createElement("input");
+          tempInput.value = "8720123456";
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand("copy");
+          document.body.removeChild(tempInput);
+
+          showToast("Nomor rekening disalin!", "success");
+        });
+
+        $("#btn-buat-pesanan").click(function () {
+          const oriText = $(this).html();
+          $(this)
+            .html('<i class="fas fa-spinner fa-spin mr-2"></i> Memproses...')
+            .prop("disabled", true);
+
+          setTimeout(() => {
+            cart = [];
+            updateCartUI();
+            $(this).html(oriText).prop("disabled", false);
+            switchView("#home-view");
+            showToast("Pesanan Berhasil! Menunggu pembayaran.", "success");
+          }, 2000);
+        });
+
+        function showToast(msg, type = "success") {
+          const t = $("#toast");
+          t.find("span").text(msg);
+
+          if (type === "error") {
+            t.find("i")
+              .removeClass("fa-check text-pastel-accent")
+              .addClass("fa-exclamation text-red-500");
+            t.find("div.w-8")
+              .removeClass("bg-pastel-accent/20")
+              .addClass("bg-red-500/20");
+          } else {
+            t.find("i")
+              .removeClass("fa-exclamation text-red-500")
+              .addClass("fa-check text-pastel-accent");
+            t.find("div.w-8")
+              .removeClass("bg-red-500/20")
+              .addClass("bg-pastel-accent/20");
+          }
+
+          t.removeClass("translate-y-20 opacity-0").addClass(
+            "translate-y-0 opacity-100",
+          );
+          if (window.toastTimeout) clearTimeout(window.toastTimeout);
+          window.toastTimeout = setTimeout(
+            () =>
+              t
+                .addClass("translate-y-20 opacity-0")
+                .removeClass("translate-y-0 opacity-100"),
+            3000,
+          );
+        }
+
+        buildProductDatabase();
+      });
+    </script>
+  </body>
+</html>
